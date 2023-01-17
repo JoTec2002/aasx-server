@@ -213,12 +213,70 @@
     <script>
         // makes div resizable in x-direction
         window.resize = () => {
-            $('.resize').resizable({
-                containment: "#con", grid: [1, 10000]
+            const leftColumn = document.querySelector('.left-column');
+            const rightColumn = document.querySelector('.right-column');
+            const divider = document.querySelector('.divider');
+            const elements = document.querySelectorAll("#element");
+            
+            let isResizing = false;
+            let startX;
+            let cursor = document.body.style.cursor;
+            let userSelect = document.body.style.userSelect;
+            divider.addEventListener('mousedown', (e) => {
+                console.log(element);
+                cursor = document.body.style.cursor;
+                document.body.style.cursor = 'col-resize';
+                isResizing = true;
+                startX = e.clientX;
+                elements.forEach(element => {
+                    element.className =
+   element.className.replace
+      ( /(?:^|\s)cursor-pointer(?!\S)/g , '' )
+                }); 
+
+                document.body.style.userSelect = "none";
             });
 
-            // hides the resize icon in the bottom right corner of the div
-            $('.ui-resizable-se').css({ "visibility": "hidden" })
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                const leftColumnWidth = leftColumn.getBoundingClientRect().width;
+                const rightColumnWidth = rightColumn.getBoundingClientRect().width;
+                const leftBorder = leftColumn.getBoundingClientRect().left + 0.3 * window.innerWidth;
+                const rightBorder = rightColumn.getBoundingClientRect().right - 0.3 * window.innerWidth;
+                let distance;
+                
+                if (e.clientX < leftBorder ) {
+                    distance = leftBorder - startX;
+                } else if (e.clientX > rightBorder ) {
+                    distance = rightBorder - startX;
+                } else {
+                    distance = e.clientX - startX;
+                }
+
+                
+
+                leftColumn.style.width = `${leftColumnWidth + distance}px`;
+                rightColumn.style.width = `${rightColumnWidth - distance}px`;
+
+                if (e.clientX < leftBorder) {
+                    startX = leftBorder;
+                } else if (e.clientX > rightBorder ) {
+                    startX = rightBorder;
+                    } else {
+                    startX = e.clientX;
+                    }
+                    });
+
+                    document.addEventListener('mouseup', () => {
+                    document.body.style.cursor = "auto";
+                    isResizing = false;
+                    elements.forEach(element => {
+                        console.log(element.className)
+                    element.className += " cursor-pointer";
+
+                });
+                document.body.style.userSelect = userSelect;
+                    });
         }
 
     </script>

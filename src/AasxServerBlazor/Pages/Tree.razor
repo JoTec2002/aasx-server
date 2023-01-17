@@ -45,7 +45,7 @@ https://github.com/mwinkler/Blazor.Components/blob/master/LICENSE
                 </span>
             }
 
-            <div class="flex space-x-8 flex-col mb-1 pr-4 ml-4 cursor-pointer @(nodeSelected ? "border-2 border-[#D42044]" : "") bg-[@(color)]" @onclick="@(() => OnSelectNode(node))">
+            <div id="element" class="flex space-x-8 flex-col mb-1 pr-4 ml-4 cursor-pointer @(nodeSelected ? "border-2 border-[#D42044]" : "") bg-[@(color)]" @onclick="@(() => OnSelectNode(node))">
                     <div class="flex flex-row">
                 @{
                     string titleId = "";
