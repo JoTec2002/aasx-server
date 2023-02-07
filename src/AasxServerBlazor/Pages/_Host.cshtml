@@ -213,22 +213,24 @@
 	<script>
 		// makes div resizable in x-direction
 		window.resize = () => {
+			const mobileModeWidth = 1000;
 			const leftColumn = document.querySelector('.left-column');
 			const rightColumn = document.querySelector('.right-column');
 			const divider = document.querySelector('.divider');
-			const elements = document.querySelectorAll("#element");
+			const container = document.querySelector("#container");
+			let elements = document.querySelectorAll("#element");
 
 			let mobileModeOn = false;
 			let isResizing = false;
-			let startX;
+			let startCoordinate;
 			let cursor = document.body.style.cursor;
 			let userSelect = document.body.style.userSelect;
 			divider.addEventListener('mousedown', (e) => {
-				console.log(element);
 				cursor = document.body.style.cursor;
-				document.body.style.cursor = 'col-resize';
+				document.body.style.cursor = mobileModeOn ? 'n-resize' : 'e-resize';
 				isResizing = true;
-				startX = e.clientX;
+				startCoordinate = mobileModeOn ? e.clientY : e.clientX;
+			
 				elements.forEach(element => {
 					element.className =
 						element.className.replace
@@ -242,28 +244,43 @@
 				if (!isResizing) return;
 				const leftColumnWidth = leftColumn.getBoundingClientRect().width;
 				const rightColumnWidth = rightColumn.getBoundingClientRect().width;
-				const leftBorder = leftColumn.getBoundingClientRect().left + 0.3 * window.innerWidth;
-				const rightBorder = rightColumn.getBoundingClientRect().right - 0.3 * window.innerWidth;
-				let distance;
+				const leftColumnHeight = leftColumn.getBoundingClientRect().height;
+				const rightColumnHeight = rightColumn.getBoundingClientRect().height;
 
-				if (e.clientX < leftBorder) {
-					distance = leftBorder - startX;
-				} else if (e.clientX > rightBorder) {
-					distance = rightBorder - startX;
+				const leftBorder = leftColumn.getBoundingClientRect().left + 0.25 * window.innerWidth;
+				const rightBorder = rightColumn.getBoundingClientRect().right - 0.25 * window.innerWidth;
+				const topBorder = window.innerHeight;
+				const bottomBorder = 0;
+				let distance;
+				let mouseCoordinate = (mobileModeOn ? e.clientY : e.clientX);
+				let upperBound = !mobileModeOn ? rightBorder : topBorder;
+				let lowerBound = !mobileModeOn ? leftBorder : bottomBorder;
+
+				if (mouseCoordinate < lowerBound) {
+					distance = lowerBound - startCoordinate;
+				} else if (mouseCoordinate > upperBound) {
+					distance = upperBound - startCoordinate;
 				} else {
-					distance = e.clientX - startX;
+					distance = mouseCoordinate - startCoordinate;
 				}
 
+				if (mobileModeOn)
+				{
+					leftColumn.style.height = `${leftColumnHeight + distance}px`;
+				}
+				else
+				{
+					leftColumn.style.width = `${leftColumnWidth + distance}px`;
+					rightColumn.style.width = `${rightColumnWidth - distance}px`;
+				}
+				
 
-				leftColumn.style.width = `${leftColumnWidth + distance}px`;
-				rightColumn.style.width = `${rightColumnWidth - distance}px`;
-
-				if (e.clientX < leftBorder) {
-					startX = leftBorder;
-				} else if (e.clientX > rightBorder) {
-					startX = rightBorder;
+				if (mouseCoordinate < lowerBound) {
+					startCoordinate = lowerBound;
+				} else if (mouseCoordinate > upperBound) {
+					startCoordinate = upperBound;
 				} else {
-					startX = e.clientX;
+					startCoordinate = mouseCoordinate;
 				}
 			});
 
@@ -278,25 +295,59 @@
 				document.body.style.userSelect = userSelect;
 			});
 			
+
+
+
+			var windowWidth = window.innerWidth;
+			if(windowWidth < mobileModeWidth)
+			{
+				onWindowResize();
+			}
+
 			function onWindowResize() {
 				var windowWidth = window.innerWidth;
-
-				if (windowWidth < 700)
+			
+				if (!mobileModeOn)
 				{
-					rightColumn.style.display = "none";
-					leftColumn.style.width = "100%";
-					mobileModeOn = true;
+					leftColumn.style.width = `${parseInt(windowWidth * 0.3)}px`;
+					if (rightColumn.style.right >= windowWidth)
+					{
+						rightColumn.style.width = `${parseInt(windowWidth * 0.6)}px`;
+					}
 				}
-				else
+
+				if (windowWidth < mobileModeWidth && !mobileModeOn)
 				{
-					rightColumn.style.display = "inline";
-					leftColumn.style.width = "30%";
+					
+					container.style.flexDirection = "column";
+					leftColumn.style.width = "100%";
+					rightColumn.style.width = "100%";
+					divider.style.width = "100%";
+					divider.style.height = "10px";
+					divider.style.cursor = "n-resize"
+					leftColumn.style.overflowY = "scroll";
+					mobileModeOn = true;
+					
+				}
+				else if (windowWidth >= mobileModeWidth && mobileModeOn)
+				{
+					container.style.flexDirection = "row";
+					leftColumn.style.width = `${parseInt(windowWidth * 0.3)}px`;
+					leftColumn.style.height = null;
+					leftColumn.style.overflowY = null;
+					rightColumn.style.height = null;
+					divider.style.width = "10px";
+					divider.style.height = null;
+					divider.style.cursor = "e-resize"
 					mobileModeOn = false;
 				}
 			}
+			
+
 
 			window.onresize = onWindowResize;
 		}
+		
 
 	</script>
 	<script type="text/javascript">
