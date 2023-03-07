@@ -20,6 +20,7 @@
     <PackageTags>aas;asset administration shell;iiot;industry internet of things;industrie 4.0;i4.0</PackageTags>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.18.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 </Project>

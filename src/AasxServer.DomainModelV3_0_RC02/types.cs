@@ -9,6 +9,7 @@ using System.Collections.Generic;  // can't alias
 using Aas = AasCore.Aas3_0_RC02;
 using System;
 using Newtonsoft.Json;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace AasCore.Aas3_0_RC02
 {
@@ -1787,6 +1788,7 @@ namespace AasCore.Aas3_0_RC02
     /// refers to a well-defined domain or subject matter. Submodels can become
     /// standardized and, thus, become submodels templates.
     /// </remarks>
+    [BsonDiscriminator("Submodel")]
     public class Submodel :
             IIdentifiable,
             IHasKind,
@@ -1940,6 +1942,7 @@ namespace AasCore.Aas3_0_RC02
         /// <summary>
         /// A submodel consists of zero or more submodel elements.
         /// </summary>
+        [BsonElement]
         public List<ISubmodelElement>? SubmodelElements { get; set; }
 
         #region Parent and Timestamp
@@ -3778,6 +3781,7 @@ namespace AasCore.Aas3_0_RC02
     ///     </li>
     /// </ul>
     /// </remarks>
+    [BsonDiscriminator("Property")]
     public class Property : IDataElement
     {
         /// <summary>

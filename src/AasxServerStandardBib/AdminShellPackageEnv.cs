@@ -292,6 +292,7 @@ namespace AdminShellNS
         private Package _openPackage = null;
         private readonly ListOfAasSupplementaryFile _pendingFilesToAdd = new ListOfAasSupplementaryFile();
         private readonly ListOfAasSupplementaryFile _pendingFilesToDelete = new ListOfAasSupplementaryFile();
+        public string id = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
 
         public AdminShellPackageEnv() { }
 

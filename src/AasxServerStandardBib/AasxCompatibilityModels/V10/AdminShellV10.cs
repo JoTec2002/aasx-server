@@ -126,7 +126,6 @@ namespace AasxCompatibilityModels
     /// </summary>
     public class AdminShellV10
     {
-
         public class Identification
         {
 

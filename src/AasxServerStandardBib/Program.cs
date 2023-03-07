@@ -22,6 +22,7 @@ using AasCore.Aas3_0_RC02;
 using AasOpcUaServer;
 using AasxMqttServer;
 using AasxRestServerLibrary;
+using AasxServerStandardBib;
 using AdminShellNS;
 using Extenstions;
 using Jose;
@@ -29,6 +30,7 @@ using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Search;
 using MailKit.Security;
+using MongoDB.Bson.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Opc.Ua;
@@ -159,9 +161,13 @@ namespace AasxServer
 
         public static Dictionary<object, string> generatedQrCodes = new Dictionary<object, string>();
 
+        public static AasxServerStandardBib.IDatabase database; 
+
         public static string redirectServer = "";
         public static string authType = "";
         public static string DataPath { get; set; }
+
+        public static MongoDBService Database { get; set; }
 
         public static bool isLoading = true;
         public static int count = 0;
@@ -447,18 +453,64 @@ namespace AasxServer
                 }
             }
 
+            Database = new MongoDBService();
 
             int envi = 0;
-
             string[] fileNames = null;
+            int DBCount = Database.GetAASEnvCount();
+
+            if (DBCount > 0)
+            {
+                List<MongoDBService.AasEnv> envsFromDatabase = Database.GetAllAasEnvs();
+
+                while (envi < DBCount)
+                {
+                    fn = envsFromDatabase[envi].Filename;
+
+                    if (envi < envimax)
+                    {
+                        string name = Path.GetFileName(fn);
+
+                        Console.WriteLine("Loading {0}...", fn);
+                        envFileName[envi] = fn;
+                        env[envi] = envsFromDatabase[envi].ToAdminShellPackageEnv();
+
+                        if (env[envi] == null)
+                        {
+                            Console.Error.WriteLine($"Cannot get {fn} from Database. Aborting..");
+                            return 1;
+                        }
+                        // check if signed
+                        string fileCert = "./user/" + name + ".cer";
+                        if (System.IO.File.Exists(fileCert))
+                        {
+                            X509Certificate2 x509 = new X509Certificate2(fileCert);
+                            envSymbols[envi] = "S";
+                            envSubjectIssuer[envi] = x509.Subject;
+
+                            X509Chain chain = new X509Chain();
+                            chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
+                            bool isValid = chain.Build(x509);
+                            if (isValid)
+                            {
+                                envSymbols[envi] += ";V";
+                                envSubjectIssuer[envi] += ";" + x509.Issuer;
+                            }
+                        }
+
+                    }
+                    envi++;
+                }
+            }
+
             if (Directory.Exists(AasxHttpContextHelper.DataPath))
             {
                 fileNames = Directory.GetFiles(AasxHttpContextHelper.DataPath, "*.aasx");
                 Array.Sort(fileNames);
 
-                while (envi < fileNames.Length)
+                while (envi < fileNames.Length + DBCount)
                 {
-                    fn = fileNames[envi];
+                    fn = fileNames[envi - DBCount];
 
                     if (fn != "" && envi < envimax)
                     {
@@ -472,6 +524,9 @@ namespace AasxServer
                         Console.WriteLine("Loading {0}...", fn);
                         envFileName[envi] = fn;
                         env[envi] = new AdminShellPackageEnv(fn, true);
+                        // sophie: load into database if not already existent
+                        Database.CreateAASEnv(env[envi], fn);
+
                         if (env[envi] == null)
                         {
                             Console.Error.WriteLine($"Cannot open {fn}. Aborting..");

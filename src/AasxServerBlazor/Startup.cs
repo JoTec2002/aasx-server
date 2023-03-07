@@ -11,6 +11,7 @@ using IO.Swagger.V1RC03.Filters;
 using IO.Swagger.V1RC03.Logging;
 using IO.Swagger.V1RC03.Middleware;
 using IO.Swagger.V1RC03.Services;
+using AasxServerStandardBib;
 //using IO.Swagger.Controllers;
 //using IO.Swagger.Filters;
 //using IO.Swagger.Services;
@@ -68,6 +69,8 @@ namespace AasxServerBlazor
             services.AddTransient<IInputModifierService, InputModifierService>();
             services.AddTransient<IGenerateSerializationService, GenerateSerializationService>();
             services.AddTransient<IValueOnlyDeserializerService, ValueOnlyDeserializerService>();
+
+            services.AddTransient<IDatabase, AasDataProvider>();
 
             // Add framework services.
             services
