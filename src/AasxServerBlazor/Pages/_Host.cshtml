@@ -288,7 +288,6 @@
 				document.body.style.cursor = "auto";
 				isResizing = false;
 				elements.forEach(element => {
-					console.log(element.className)
 					element.className += " cursor-pointer";
 
 				});
@@ -310,7 +309,8 @@
 				if (!mobileModeOn)
 				{
 					leftColumn.style.width = `${parseInt(windowWidth * 0.3)}px`;
-					if (rightColumn.style.right >= windowWidth)
+					console.log("right: " + rightColumn.getBoundingClientRect().right + ", width: " + windowWidth)
+					if (rightColumn.getBoundingClientRect().right >= windowWidth)
 					{
 						rightColumn.style.width = `${parseInt(windowWidth * 0.6)}px`;
 					}

@@ -10,7 +10,7 @@
     },
     "AasxServerBlazor": {
       "commandName": "Project",
-      "commandLineArgs": "--rest --data-path \"C:\\Benutzer\\Mateusz\\Desktop\\aasx_files\" --edit --no-security",
+      "commandLineArgs": "--rest --data-path \"C:\\Users\\Mateusz Pawelczyk\\Desktop\\Neuer Ordner\" --edit --no-security",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
