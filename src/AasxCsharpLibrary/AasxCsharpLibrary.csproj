@@ -4,6 +4,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AdminShellNS</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DefineConstants>TRACE;UseAasxCompatibilityModels</DefineConstants>

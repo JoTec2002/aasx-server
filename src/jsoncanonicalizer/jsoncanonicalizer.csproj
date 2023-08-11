@@ -9,4 +9,8 @@
     <ProjectReference Include="..\es6numberserializer\es6numberserializer.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+	</PropertyGroup>
+
 </Project>
