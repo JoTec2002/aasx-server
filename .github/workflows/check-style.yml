@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - master
+      - awollbrink/*
 
 jobs:
   Check-style:
@@ -17,12 +18,53 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Install dotnet tools
+      - name: Check licenses
         working-directory: src
-        run: dotnet tool restore
+        run: powershell .\CheckLicenses.ps1
+        if: always()
+
+      - name: Install .NET core 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+        if: always()
+
+      # - name: Install dotnet tools
+      #   working-directory: src
+      #   run: dotnet tool restore
+      #   if: always()
+
+      - name: Install tools for style
+        working-directory: src
+        run: powershell .\InstallToolsForStyle.ps1
+        if: always()
+
+      - name: Install tools for style
+        working-directory: src
+        run: powershell .\InstallToolsForStyle.ps1
+        if: always()
+
+      - name: Check headers
+        working-directory: src
+        run: powershell .\CheckHeaders.ps1
         if: always()
 
       - name: Check format
         working-directory: src
         run: powershell .\CheckFormat.ps1
+        if: always()
+
+      - name: Check bite-sized
+        working-directory: src
+        run: powershell .\CheckBiteSized.ps1
+        if: always()
+
+      - name: Check dead code
+        working-directory: src
+        run: powershell .\CheckDeadCode.ps1
+        if: always()
+
+      - name: Check TODOs
+        working-directory: src
+        run: powershell .\CheckTodos.ps1
         if: always()

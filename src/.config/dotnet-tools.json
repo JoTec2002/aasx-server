@@ -3,9 +3,33 @@
   "isRoot": true,
   "tools": {
     "dotnet-format": {
-      "version": "4.0.130203",
+      "version": "5.1.250801",
       "commands": [
         "dotnet-format"
+      ]
+    },
+    "deadcsharp": {
+      "version": "2.0.0",
+      "commands": [
+        "dead-csharp"
+      ]
+    },
+    "bitesized": {
+      "version": "2.0.0",
+      "commands": [
+        "bite-sized"
+      ]
+    },
+    "doctestcsharp": {
+      "version": "2.0.0",
+      "commands": [
+        "doctest-csharp"
+      ]
+    },
+    "opinionatedcsharptodos": {
+      "version": "2.0.0",
+      "commands": [
+        "opinionated-csharp-todos"
       ]
     }
   }

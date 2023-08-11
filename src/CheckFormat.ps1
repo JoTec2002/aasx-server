@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 Import-Module (Join-Path $PSScriptRoot Common.psm1) -Function `
     AssertDotnet,  `
     AssertDotnetFormatVersion,  `
-    GetArtefactsDir
+    CreateAndGetArtefactsDir
 
 function Main
 {
@@ -17,16 +17,44 @@ function Main
     Set-Location $PSScriptRoot
     Write-Host "Inspecting the code format with dotnet-format..."
 
-    $artefactsDir = GetArtefactsDir
-    New-Item -ItemType Directory -Force -Path $artefactsDir|Out-Null
+    $artefactsDir = CreateAndGetArtefactsDir
 
     $reportPath = Join-Path $artefactsDir "dotnet-format-report.json"
-    dotnet format --verify-no-changes --report $reportPath --exclude "**/DocTest*.cs"
+   
+    # MIHO: dotnet format seems to changed --check with --verify-no-changes
+	# therefore try to detect
+	$checkswitch = "--check"
+	$fmthelp = dotnet format --help | Out-String
+	if ($fmthelp.Contains("--verify-no-changes")) 
+	{		
+		$checkswitch = "--verify-no-changes"
+	}
+
+	Write-Host "Using dotnet format switch: $checkswitch"
+
+    dotnet format $checkswitch --report $reportPath --exclude "**/DocTest*.cs"
+    
     $formatReport = Get-Content $reportPath |ConvertFrom-Json
-    if ($formatReport.Count -ge 1)
+    $warn_count = 0
+    $error_count = 0
+    for($i=0 ; $i -lt $formatReport.Count; $i++) { 
+        if($formatReport[$i].FileChanges[0].FormatDescription -like "*warning*"){
+            $warn_count++
+        }else{
+            $error_count++
+        }
+    }
+
+    Write-Host "found $warn_count warnings!"
+    Write-Host "found $error_count errors!"
+
+    if ($error_count -ge 1)
     {
-        throw "There are $( $formatReport.Count ) dotnet-format issue(s). " +  `
-             "The report is stored in: $reportPath"
+        throw (
+            "There are $( $formatReport.Count ) dotnet-format issue(s). " +
+            "The report is stored in: $reportPath. " +
+            "Please reformat the code with FormatCode.ps1."
+        )
     }
 }
 
