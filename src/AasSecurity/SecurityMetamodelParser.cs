@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AasSecurity
 {
-    //TODO:jtikekar whether to make it static
+    //TODO (jtikekar, 0000-00-00): whether to make it static
     internal class SecurityMetamodelParser
     {
         private static ILogger _logger = ApplicationLogging.CreateLogger("SecurityMetamodelParser");
@@ -36,7 +36,7 @@ namespace AasSecurity
                                     }
                                     break;
                                 }
-                                //TODO:jtikekar default
+                                //TODO (jtikekar, 0000-00-00): default
                         }
                     }
 
@@ -164,7 +164,8 @@ namespace AasSecurity
                             else
                             {
                                 securityRole.Name = subjectAttribute;
-                                securityRole.Condition = ""; //TODO:jtikekar handle by defaults
+                                securityRole.Condition = "";
+                                //TODO (jtikekar, 0000-00-00): handle by defaults
                             }
 
                             if (permPerObject._Object is Property objectProperty && objectProperty != null)

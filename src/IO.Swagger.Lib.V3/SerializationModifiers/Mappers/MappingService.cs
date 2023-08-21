@@ -17,7 +17,7 @@ namespace IO.Swagger.Lib.V3.SerializationModifiers.Mappers
                 throw new Exception($"Could not resolve serializer modifier mapper.");
             }
 
-            //TODO:jtikekar Refactor
+            //TODO (jtikekar, 0000-00-00): jtikekar Refactor
             if (mappingResolverKey.Equals("metadata", StringComparison.OrdinalIgnoreCase))
             {
                 return ResponseMetadataMapper.Map(source);
@@ -39,7 +39,7 @@ namespace IO.Swagger.Lib.V3.SerializationModifiers.Mappers
                 throw new Exception($"Could not resolve serializer modifier mapper.");
             }
 
-            //TODO:jtikekar Refactor
+            //TODO (jtikekar, 0000-00-00): jtikekar Refactor
             if (mappingResolverKey.Equals("metadata", StringComparison.OrdinalIgnoreCase))
             {
                 var output = new List<IDTO>();
@@ -77,7 +77,7 @@ namespace IO.Swagger.Lib.V3.SerializationModifiers.Mappers
                 throw new Exception($"Could not resolve serializer modifier mapper.");
             }
 
-            //TODO:jtikekar Refactor
+            //TODO (jtikekar, 0000-00-00): jtikekar Refactor
             if (mappingResolverKey.Equals("metadata", StringComparison.OrdinalIgnoreCase) && dto is IMetadataDTO metadataDTO)
             {
                 return RequestMetadataMapper.Map(metadataDTO);

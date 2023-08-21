@@ -18,7 +18,7 @@ namespace AasSecurity
     {
         private static ILogger _logger = ApplicationLogging.CreateLogger("SecurityService");
 
-        //TODO:jtikekar uncomment
+        //TODO (jtikekar, 0000-00-00): uncomment
         //public SecurityService(IAppLogger<SecurityService> logger)
         //{
         //    _logger = logger;
@@ -27,7 +27,7 @@ namespace AasSecurity
 
         public void SecurityCheckInit(HttpContext context, string route, string httpOperation)
         {
-            //TODO:jtikekar @Andreas purpose of index
+            //TODO (jtikekar, 0000-00-00): @Andreas purpose of index
             int index = -1;
             if (!GlobalSecurityVariables.WithAuthentication)
             {
@@ -45,7 +45,7 @@ namespace AasSecurity
             }
 
             var accessRole = GetAccessRole(queries, headers, index);
-            //TODO:jtikekar what if accessRole is null?
+            //TODO (jtikekar, 0000-00-00): what if accessRole is null?
             var aasSecurityContext = new AasSecurityContext(accessRole, route, httpOperation);
             context.Items.Add("AasSecurityContext", aasSecurityContext);
         }
@@ -189,7 +189,7 @@ namespace AasSecurity
                 _logger.LogDebug(ex.StackTrace);
             }
 
-            //TODO:jtikekar refactor
+            //TODO (jtikekar, 0000-00-00): refactor
             return "";
         }
 
@@ -213,7 +213,7 @@ namespace AasSecurity
                                 }
                                 else if (split[0].ToLower().Equals("basic") && bearerToken == null)
                                 {
-                                    //TODO:jtikekar support basic auth
+                                    //TODO (jtikekar, 0000-00-00): support basic auth
                                 }
                             }
                             break;
@@ -280,7 +280,7 @@ namespace AasSecurity
                             if (token != null)
                             {
                                 _logger.LogDebug($"Received token of type username-password {token}");
-                                //TODO:jtikekar support
+                                //TODO (jtikekar, 0000-00-00): support
                             }
                             break;
                         }
@@ -318,10 +318,10 @@ namespace AasSecurity
 
             if (Program.secretStringAPI != null)
             {
-                //TODO:jtikekar check with Andreas
+                //TODO (jtikekar, 0000-00-00): check with Andreas
                 if (neededRights == AccessRights.READ)
                     return true;
-                //TODO:jtikekar @andreas, why currentRole as accessRight?
+                //TODO (jtikekar, 0000-00-00): @andreas, why currentRole as accessRight?
                 if ((neededRights == AccessRights.UPDATE || neededRights == AccessRights.DELETE) && currentRole == "UPDATE")
                     return true;
                 if (currentRole == "CREATE")
@@ -338,7 +338,7 @@ namespace AasSecurity
 
                 if (currentRole == null)
                 {
-                    //TODO:jtikekar @Andreas, do we need this code?
+                    //TODO (jtikekar, 0000-00-00): @Andreas, do we need this code?
                     /*
                     if (AasxServer.Program.redirectServer != "")
                     {
@@ -440,7 +440,7 @@ namespace AasSecurity
                             }
                         }
                     }
-                    //TODO:jtikekar @Andreas, where aasResource is a string?
+                    //TODO (jtikekar, 0000-00-00): @Andreas, where aasResource is a string?
                     //if (aasResource is string s2)
                     //{
                     //    if (s2 != null && s2 != "")
@@ -554,7 +554,7 @@ namespace AasSecurity
 
         private static bool CheckUsage(out string error, SecurityRole securityRole)
         {
-            //TODO:jtikekar need to support
+            //TODO (jtikekar, 0000-00-00): need to support
             throw new NotImplementedException();
         }
     }

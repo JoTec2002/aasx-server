@@ -575,7 +575,7 @@ namespace AasOpcUaServer
             {
                 foreach (var cdd in aas.conceptDictionaries)
                 {
-                    // TODO: reference to CDs. They are stored sepaately
+                    // TODO (???, 0000-00-00): reference to CDs. They are stored sepaately
                 }
             }
 
@@ -813,11 +813,11 @@ namespace AasOpcUaServer
             // populate common attributes
             base.PopulateInstanceObject(o, prop);
 
-            // TODO: not sure if to add these
+            // TODO (??, 0000-00-00): not sure if to add these
             this.entityBuilder.AasTypes.Reference.CreateAddElements(o, CreateMode.Instance, prop.ValueId, "ValueId");
             this.entityBuilder.CreateAddPropertyState<string>(o, "ValueType", DataTypeIds.String, "" + prop.ValueType, defaultSettings: true);
 
-            // TODO: aim is to support many types natively
+            // TODO (??, 0000-00-00): aim is to support many types natively
             var vt = (prop.ValueType ?? "").ToLower().Trim();
             if (vt == "boolean")
             {
@@ -909,7 +909,7 @@ namespace AasOpcUaServer
             : base(entityBuilder)
         {
             // create type object
-            // TODO: use the collection element of UA
+            // TODO (???, 0000-00-00): use the collection element of UA
             this.typeObject = this.entityBuilder.CreateAddObjectType("AASSubmodelElementCollectionType", entityBuilder.AasTypes.SubmodelElement.GetTypeNodeId(), preferredTypeNumId, descriptionKey: "AAS:SubmodelElementCollection");
             this.typeObjectOrdered = this.entityBuilder.CreateAddObjectType("AASSubmodelElementOrderedCollectionType", this.GetTypeNodeId(), preferredTypeNumId + 1, descriptionKey: "AAS:SubmodelElementCollection");
 
@@ -1173,13 +1173,13 @@ namespace AasOpcUaServer
                     if (op[i] != null)
                         foreach (var opvar in op[i])
                         {
-                            // TODO: decide to from where the name comes
+                            // TODO (???, 0000-00-00): decide to from where the name comes
                             var name = "noname";
 
-                            // TODO: description: get "en" version is appropriate?
+                            // TODO (???, 0000-00-00): description: get "en" version is appropriate?
                             LocalizedText desc = new LocalizedText("");
 
-                            // TODO: parse UA data type out .. OK?
+                            // TODO (??, 0000-00-00): parse UA data type out .. OK?
                             NodeId dataType = null;
                             if (opvar.Value != null && opvar.Value.submodelElement != null)
                             {
@@ -1187,18 +1187,18 @@ namespace AasOpcUaServer
                                 if (opvar.Value.submodelElement.IdShort != null && opvar.Value.submodelElement.IdShort.Trim() != "")
                                     name = "" + opvar.Value.submodelElement.IdShort;
 
-                                // TODO: description: get "en" version is appropriate?
+                                // TODO (??, 0000-00-00): description: get "en" version is appropriate?
                                 desc = AasUaUtils.GetBestUaDescriptionFromAasDescription(opvar.Value.submodelElement.description);
 
                                 // currenty, only accept properties as in/out arguments. Only these have an XSD value type!!
                                 var prop = opvar.Value.submodelElement as Property;
                                 if (prop != null && prop.ValueType != null)
                                 {
-                                    // TODO: this any better?
+                                    // TODO (??, 0000-00-00): this any better?
                                     if (prop.IdShort != null && prop.IdShort.Trim() != "")
                                         name = "" + prop.IdShort;
 
-                                    // TODO: description: get "en" version is appropriate?
+                                    // TODO (??, 0000-00-00): description: get "en" version is appropriate?
                                     if (desc.Text == null || desc.Text == "")
                                         desc = AasUaUtils.GetBestUaDescriptionFromAasDescription(opvar.Value.submodelElement.description);
 
@@ -1474,7 +1474,7 @@ namespace AasOpcUaServer
             : base(entityBuilder)
         {
             // create type object
-            // TODO: make super classes for UriDictionaryEntryType..
+            // TODO (??, 0000-00-00): make super classes for UriDictionaryEntryType..
             this.typeObjectIrdi = this.entityBuilder.CreateAddObjectType("AASIrdiConceptDescriptionType", this.entityBuilder.AasTypes.IrdiDictionaryEntryType.GetTypeNodeId(), 0, descriptionKey: "AAS:ConceptDescription");
             this.entityBuilder.AasTypes.HasInterface.CreateAddInstanceReference(this.typeObjectIrdi, false, this.entityBuilder.AasTypes.IAASIdentifiableType.GetTypeNodeId());
 

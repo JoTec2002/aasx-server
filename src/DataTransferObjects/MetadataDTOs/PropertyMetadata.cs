@@ -3,7 +3,7 @@ using DataTransferObjects.CommonDTOs;
 
 namespace DataTransferObjects.MetadataDTOs
 {
-    //TODO jtikekar:DTOs for nested structure, may have performance impact
+    //TODO (jtikekar, 0000-00-00): DTOs for nested structure, may have performance impact
 
     public record class PropertyMetadata(
             DataTypeDefXsd valueType,

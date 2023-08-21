@@ -5,7 +5,7 @@ namespace IO.Swagger.Lib.V3.SerializationModifiers.Mappers
 {
     public interface IMappingService
     {
-        //TODO:jtikekar refactor alternative to object
+        //TODO (jtikekar, 0000-00-00): refactor alternative to object
         //TDestination Map(TSource source);
         //object Map(object source);
         IDTO Map(IClass source, string mappingResolverKey);

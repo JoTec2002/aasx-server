@@ -773,10 +773,10 @@ namespace AasOpcUaServer
                 RelationshipElement = new AasUaEntityRelationshipElement(builder, 1017);
                 OperationVariable = new AasUaEntityOperationVariable(builder, 1018);
                 Operation = new AasUaEntityOperation(builder, 1019);
-                //TODO:Remove
+                //TODO (???, 0000-00-00): Remove
                 //ConceptDictionary = new AasUaEntityConceptDictionary(builder, 1020);
                 ConceptDescription = new AasUaEntityConceptDescription(builder, 1021);
-                //TODO:Remove
+                //TODO (???, 0000-00-00): Remove
                 //View = new AasUaEntityView(builder, 1022);
                 Asset = new AasUaEntityAsset(builder, 1023);
                 AAS = new AasUaEntityAAS(builder, 1024);

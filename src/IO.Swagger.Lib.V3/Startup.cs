@@ -102,7 +102,7 @@ namespace IO.Swagger
         {
             app.UseRouting();
 
-            //TODO: Uncomment this if you need wwwroot folder
+            //TODO (jtikekar, 0000-00-00): Uncomment this if you need wwwroot folder
             // app.UseStaticFiles();
 
             app.UseAuthorization();
@@ -110,14 +110,14 @@ namespace IO.Swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
+                //TODO (???, 0000-00-00): Either use the SwaggerGen generated Swagger contract (generated from C# classes)
                 c.SwaggerEndpoint("/swagger/V3.0/swagger.json", "DotAAS Part 2 | HTTP/REST | Repository Service Specification");
 
-                //TODO: Or alternatively use the original Swagger contract that's included in the static files
+                //TODO (???, 0000-00-00): Or alternatively use the original Swagger contract that's included in the static files
                 // c.SwaggerEndpoint("/swagger-original.json", "DotAAS Part 2 | HTTP/REST | Repository Service Specification Original");
             });
 
-            //TODO: Use Https Redirection
+            //TODO (???, 0000-00-00): Use Https Redirection
             // app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
@@ -131,7 +131,7 @@ namespace IO.Swagger
             }
             else
             {
-                //TODO: Enable production exception handling (https://docs.microsoft.com/en-us/aspnet/core/fundamentals/error-handling)
+                //TODO (???, 0000-00-00): Enable production exception handling (https://docs.microsoft.com/en-us/aspnet/core/fundamentals/error-handling)
                 app.UseExceptionHandler("/Error");
 
                 app.UseHsts();

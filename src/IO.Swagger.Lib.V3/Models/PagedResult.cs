@@ -35,7 +35,7 @@ namespace IO.Swagger.Models
             //If there are less elements in the sourceList than "from"
             if (startIndex > sourceList.Count - 1)
             {
-                //TODO:support logger
+                //TODO  (???, 0000-00-00): support logger
                 Console.WriteLine($"There are less elements in the retrived list than requested pagination - (from: {startIndex}, size:{endIndex})");
             }
 

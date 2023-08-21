@@ -368,7 +368,7 @@
                             // plot arguments for time series
                             tsd.Args = PlotArguments.Parse(smc.FindQualifierOfType("TimeSeries.Args")?.Value);
 
-                            // TODO: info - ZveiTimeSeriesDataV10 is currently hardcoded as JSON string in code
+                            // TODO (???, 0000-00-00): info - ZveiTimeSeriesDataV10 is currently hardcoded as JSON string in code
                             var pcts = ZveiTimeSeriesDataV10.Static;
 
                             //var tssReference = pcts.CD_TimeSeriesSegment.GetReference();
@@ -2402,7 +2402,7 @@
         var cd = Program.env[item.envIndex].AasEnv.FindConceptDescriptionByReference(se.SemanticId);
         if (cd != null)
         {
-            //TODO: jtikekar temporarily commented
+            //TODO (jtikekar, 0000-00-00): temporarily commented
             //var iec = cd.GetIEC61360();
             //if (iec != null)
             //{

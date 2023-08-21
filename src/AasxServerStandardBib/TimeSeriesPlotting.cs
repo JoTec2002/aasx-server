@@ -128,7 +128,7 @@ namespace AasxServerStandardBib
 
                         // generate cumulative data
                         //var cum = tsd.DataSet.GenerateCumulativeData(pvc.LatestSamplePosition);
-                        var cum = tsd.DataSet.GenerateCumulativeData(10); // TODO: Hardcoded value -1 instead of using LatestSamplePosition
+                        var cum = tsd.DataSet.GenerateCumulativeData(10); // TODO (??, 0000-00-00): Hardcoded value -1 instead of using LatestSamplePosition
                         var cumdi = GenerateCumulativeDataItems(cum, defaultLang);
                         var plottable = GenerateCumulativePlottable(plt, cumdi, tsd.Args);
                         if (plottable == null)
@@ -141,7 +141,7 @@ namespace AasxServerStandardBib
 
                         plt.SaveFig("wwwroot/images/scottplot/smc_timeseries_clientid" + sessionNumber + ".png");
 
-                        //res.Add(plt); //TODO: Cannot use plt
+                        //res.Add(plt); //TODO (???, 0000-00-00): Cannot use plt
                     }
                     else
                     {
@@ -169,7 +169,7 @@ namespace AasxServerStandardBib
                         var xLabels = "Time ( ";
                         int yAxisNum = 0;
 
-                        // TODO: wpfPlot name variable
+                        // TODO (???, 0000-00-00): wpfPlot name variable
                         var wpfPlot = plt;
 
                         // some basic attributes
@@ -229,7 +229,7 @@ namespace AasxServerStandardBib
                             var rld = tsds.GetRenderLimits();
                             if (rlt == null || rld == null || rlt.Min != rld.Min || rlt.Max != rld.Max)
                             {
-                                // TODO: error output
+                                // TODO (???, 0000-00-00): error output
                                 //log?.Error($"When rendering data set {tsds.DataSetId} different " +
                                 //    $"dimensions for X and Y.");
                                 Console.WriteLine($"When rendering data set {tsds.DataSetId} different " + $"dimensions for X and Y.");
@@ -309,7 +309,7 @@ namespace AasxServerStandardBib
                                     PlotHelpers.SetPlottableProperties(scatter, tsds.Args);
 
                                     tsds.Plottable = scatter;
-                                    // TODO: Need to update time series data set ... !
+                                    // TODO (???, 0000-00-00): Need to update time series data set ... !
                                     //var rl = tsds.GetRenderLimits();
                                     //scatter.MinRenderIndex = rl.Min;
                                     //scatter.MaxRenderIndex = rl.Max;
@@ -1649,7 +1649,7 @@ namespace AasxServerStandardBib
                 // create CD
                 //var cd = ConceptDescription.CreateNew(idShort, idType, id);
                 var cd = new ConceptDescription(id, idShort: idShort);
-                //TODO: jtikekar Temporarily commented
+                //TODO (jtikekar, 0000-00-00): Temporarily commented
                 //var dsiec = cd.CreateDataSpecWithContentIec61360();
                 //dsiec.preferredName = new AdminShell.LangStringSetIEC61360(lang, "" + idShort);
                 //dsiec.definition = new AdminShell.LangStringSetIEC61360(lang,
@@ -1871,12 +1871,12 @@ namespace AasxServerStandardBib
                     // no? then look for CD information
                     if (cd != null)
                     {
-                        //TODO: jtikekar Temporarily commented
+                        //TODO (jtikekar, 0000-00-00): Temporarily commented
                         //if (!HasContent(better))
                         //    better = cd.GetDefaultPreferredName(defaultLang);
                         if (!HasContent(better))
                             better = cd.IdShort;
-                        //TODO: jtikekar Temporarily commented
+                        //TODO (jtikekar, 0000-00-00): Temporarily commented
                         //if (HasContent(better) && true == HasContent(cd.IEC61360Content?.unit))
                         //    better += $" [{cd.IEC61360Content?.unit}]";
                     }

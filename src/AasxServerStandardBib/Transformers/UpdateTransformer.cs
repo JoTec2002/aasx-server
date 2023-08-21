@@ -607,7 +607,7 @@ namespace AasxServerStandardBib.Transformers
                     }
                 }
 
-                //TODO:jtikekar check if nested transform necessary
+                //TODO (jtikekar, 0000-00-00): check if nested transform necessary
                 if (target.Extensions != null) that.Extensions = target.Extensions;
                 if (target.Category != null) that.Category = target.Category;
                 if (target.IdShort != null)

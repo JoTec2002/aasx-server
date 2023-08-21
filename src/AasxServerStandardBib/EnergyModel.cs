@@ -91,7 +91,7 @@ namespace AasxDemonstration
                 string user, string password,
                 string credentials) : base()
             {
-                // TODO ERICH
+                // TODO (ERICH, 0000-00-00): ERICH
             }
         }
 
@@ -119,7 +119,7 @@ namespace AasxDemonstration
                     return dbg.Rnd.Next(0, 9) >= 8;
 
                 if (sosy is SourceSystemAzureHub azure)
-                    // TODO ERICH
+                    // TODO (ERICH, 0000-00-00): ERICH
                     return false;
 
                 return false;
@@ -134,7 +134,7 @@ namespace AasxDemonstration
                     return dbg.Rnd.NextDouble() * 99.9;
 
                 if (sosy is SourceSystemAzureHub azure)
-                    // TODO ERICH
+                    // TODO (ERICH, 0000-00-00): ERICH
                     return 0.0;
 
                 return 0.0;
@@ -286,7 +286,7 @@ namespace AasxDemonstration
                     return dbg.Rnd.NextDouble() * 99.9;
 
                 if (sosy is SourceSystemAzureHub azure)
-                    // TODO ERICH
+                    // TODO (ERICH, 0000-00-00): ERICH
                     return 0.0;
 
                 return 0.0;
@@ -397,7 +397,7 @@ namespace AasxDemonstration
                     return dbg.Rnd.Next(0, 9) >= 8;
 
                 if (sosy is SourceSystemAzureHub azure)
-                    // TODO ERICH
+                    // TODO (ERICH, 0000-00-00): ERICH
                     return false;
 
                 return false;
@@ -567,7 +567,7 @@ namespace AasxDemonstration
                             SourceId = q.Value
                         });
 
-                    //TODO:JT: Need to check again
+                    //TODO (jtikekar, 0000-00-00): Need to check again
                     return true;
                 });
             }
@@ -699,7 +699,7 @@ namespace AasxDemonstration
                             continue;
 
                         // relevant?
-                        //TODO:jtikekar check with Andreas
+                        //TODO (jtikekar, 0000-00-00): check with Andreas
                         //if ((smcsegt.Kind.Value == ModellingKind.Template) && first)
                         {
                             first = false;

@@ -153,7 +153,7 @@ namespace IO.Swagger.Lib.V3.Services
                 throw new Exception($"File already exists");
             }
 
-            //TODO:Check file extentsion ".aasx"
+            //TODO (jtikekar, 0000-00-00): Check file extentsion ".aasx"
             //Write the received file content to this temp file
             //var content = Convert.FromBase64String(body);
             System.IO.File.WriteAllBytes(newFileName, fileContent);

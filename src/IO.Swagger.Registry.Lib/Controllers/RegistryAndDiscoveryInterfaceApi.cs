@@ -47,7 +47,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerOperation("DeleteAllAssetLinksById")]
         public virtual IActionResult DeleteAllAssetLinksById([FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
 
             throw new NotImplementedException();
@@ -64,7 +64,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerOperation("DeleteAssetAdministrationShellDescriptorById")]
         public virtual IActionResult DeleteAssetAdministrationShellDescriptorById([FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
 
             throw new NotImplementedException();
@@ -82,7 +82,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerOperation("DeleteSubmodelDescriptorById")]
         public virtual IActionResult DeleteSubmodelDescriptorById([FromRoute][Required] string aasIdentifier, [FromRoute][Required] string submodelIdentifier)
         {
-            //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
 
             throw new NotImplementedException();
@@ -101,7 +101,7 @@ namespace IO.Swagger.Registry.Controllers
         public virtual IActionResult GetAllAssetAdministrationShellDescriptors(
             [FromQuery] String assetId)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<AssetAdministrationShellDescriptor>));
             /*
             string exampleJson = null;
@@ -109,7 +109,7 @@ namespace IO.Swagger.Registry.Controllers
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<AssetAdministrationShellDescriptor>>(exampleJson)
-            : default(List<AssetAdministrationShellDescriptor>);            //TODO: Change the data returned
+            : default(List<AssetAdministrationShellDescriptor>);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
             */
             try
@@ -145,7 +145,7 @@ namespace IO.Swagger.Registry.Controllers
             [FromQuery] List<IdentifierKeyValuePair> assetIds,
             [FromQuery] String assetId)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<string>));
             /*
             string exampleJson = null;
@@ -153,7 +153,7 @@ namespace IO.Swagger.Registry.Controllers
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<List<string>>(exampleJson)
-                        : default(List<string>);            //TODO: Change the data returned
+                        : default(List<string>);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
 
             [
@@ -206,14 +206,14 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(List<IdentifierKeyValuePair>), description: "Requested Asset identifier key-value-pairs")]
         public virtual IActionResult GetAllAssetLinksById([FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<IdentifierKeyValuePair>));
             string exampleJson = null;
             exampleJson = "[ \"\", \"\" ]";
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<IdentifierKeyValuePair>>(exampleJson)
-            : default(List<IdentifierKeyValuePair>);            //TODO: Change the data returned
+            : default(List<IdentifierKeyValuePair>);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
         }
 
@@ -229,14 +229,14 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(List<SubmodelDescriptor>), description: "Requested Submodel Descriptors")]
         public virtual IActionResult GetAllSubmodelDescriptors([FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<SubmodelDescriptor>));
             string exampleJson = null;
             exampleJson = "[ {\n  \"semanticId\" : \"\",\n  \"identification\" : \"identification\",\n  \"idShort\" : \"idShort\",\n  \"administration\" : {\n    \"version\" : \"version\",\n    \"revision\" : \"revision\"\n  },\n  \"description\" : [ {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  }, {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  } ]\n}, {\n  \"semanticId\" : \"\",\n  \"identification\" : \"identification\",\n  \"idShort\" : \"idShort\",\n  \"administration\" : {\n    \"version\" : \"version\",\n    \"revision\" : \"revision\"\n  },\n  \"description\" : [ {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  }, {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  } ]\n} ]";
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<SubmodelDescriptor>>(exampleJson)
-            : default(List<SubmodelDescriptor>);            //TODO: Change the data returned
+            : default(List<SubmodelDescriptor>);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
         }
 
@@ -326,7 +326,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(AssetAdministrationShellDescriptor), description: "Requested Asset Administration Shell Descriptor")]
         public virtual IActionResult GetAssetAdministrationShellDescriptorById([FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(AssetAdministrationShellDescriptor));
             /*
             string exampleJson = null;
@@ -334,7 +334,7 @@ namespace IO.Swagger.Registry.Controllers
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AssetAdministrationShellDescriptor>(exampleJson)
-            : default(AssetAdministrationShellDescriptor);            //TODO: Change the data returned
+            : default(AssetAdministrationShellDescriptor);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
             */
             var timestamp = DateTime.UtcNow;
@@ -365,14 +365,14 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(SubmodelDescriptor), description: "Requested Submodel Descriptor")]
         public virtual IActionResult GetSubmodelDescriptorById([FromRoute][Required] string aasIdentifier, [FromRoute][Required] string submodelIdentifier)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(SubmodelDescriptor));
             string exampleJson = null;
             exampleJson = "{\n  \"semanticId\" : \"\",\n  \"identification\" : \"identification\",\n  \"idShort\" : \"idShort\",\n  \"administration\" : {\n    \"version\" : \"version\",\n    \"revision\" : \"revision\"\n  },\n  \"description\" : [ {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  }, {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  } ]\n}";
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SubmodelDescriptor>(exampleJson)
-            : default(SubmodelDescriptor);            //TODO: Change the data returned
+            : default(SubmodelDescriptor);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
         }
 
@@ -389,14 +389,14 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 201, type: typeof(List<IdentifierKeyValuePair>), description: "Asset identifier key-value-pairs created successfully")]
         public virtual IActionResult PostAllAssetLinksById([FromBody] List<IdentifierKeyValuePair> body, [FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(201, default(List<IdentifierKeyValuePair>));
             string exampleJson = null;
             exampleJson = "[ \"\", \"\" ]";
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<IdentifierKeyValuePair>>(exampleJson)
-            : default(List<IdentifierKeyValuePair>);            //TODO: Change the data returned
+            : default(List<IdentifierKeyValuePair>);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
         }
 
@@ -1177,7 +1177,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 201, type: typeof(AssetAdministrationShellDescriptor), description: "Asset Administration Shell Descriptor created successfully")]
         public virtual IActionResult PostAssetAdministrationShellDescriptor([FromBody] AssetAdministrationShellDescriptor body)
         {
-            //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(201, default(AssetAdministrationShellDescriptor));
             /*
             string exampleJson = null;
@@ -1185,7 +1185,7 @@ namespace IO.Swagger.Registry.Controllers
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AssetAdministrationShellDescriptor>(exampleJson)
-            : default(AssetAdministrationShellDescriptor);            //TODO: Change the data returned
+            : default(AssetAdministrationShellDescriptor);            //TODO (???, 0000-00-00) Change the data returned
             */
             var timestamp = DateTime.UtcNow;
             // InitRegistry(timestamp);
@@ -1222,14 +1222,14 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerResponse(statusCode: 201, type: typeof(SubmodelDescriptor), description: "Submodel Descriptor created successfully")]
         public virtual IActionResult PostSubmodelDescriptor([FromBody] SubmodelDescriptor body, [FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(201, default(SubmodelDescriptor));
             string exampleJson = null;
             exampleJson = "{\n  \"semanticId\" : \"\",\n  \"identification\" : \"identification\",\n  \"idShort\" : \"idShort\",\n  \"administration\" : {\n    \"version\" : \"version\",\n    \"revision\" : \"revision\"\n  },\n  \"description\" : [ {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  }, {\n    \"language\" : \"language\",\n    \"text\" : \"text\"\n  } ]\n}";
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SubmodelDescriptor>(exampleJson)
-            : default(SubmodelDescriptor);            //TODO: Change the data returned
+            : default(SubmodelDescriptor);            //TODO (???, 0000-00-00): Change the data returned
             return new ObjectResult(example);
         }
 
@@ -1245,7 +1245,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerOperation("PutAssetAdministrationShellDescriptorById")]
         public virtual IActionResult PutAssetAdministrationShellDescriptorById([FromBody] AssetAdministrationShellDescriptor body, [FromRoute][Required] string aasIdentifier)
         {
-            //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
 
             throw new NotImplementedException();
@@ -1264,7 +1264,7 @@ namespace IO.Swagger.Registry.Controllers
         [SwaggerOperation("PutSubmodelDescriptorById")]
         public virtual IActionResult PutSubmodelDescriptorById([FromBody] SubmodelDescriptor body, [FromRoute][Required] string aasIdentifier, [FromRoute][Required] string submodelIdentifier)
         {
-            //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            //TODO (???, 0000-00-00): Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
 
             throw new NotImplementedException();

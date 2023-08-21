@@ -520,7 +520,7 @@ namespace AasxServer
                 }
             }
 
-            //TODO:jtikekar moved to Security project
+            //TODO (jtikekar, 0000-00-00): moved to Security project
             //AasxHttpContextHelper.securityInit(); // read users and access rights form AASX Security
             AasxHttpContextHelper.serverCertsInit(); // load certificates of auth servers
 
@@ -940,7 +940,7 @@ namespace AasxServer
         /* AAS Detail Part 2 Descriptor Definitions END*/
 
         /* Creation of AAS Descriptor */
-        //TODO: jtikekar Remove for now
+        //TODO (jtikekar, 0000-00-00): jtikekar Remove for now
         public static aasDescriptor creatAASDescriptor(AdminShellPackageEnv adminShell)
         {
             aasDescriptor aasD = new aasDescriptor();
@@ -1930,7 +1930,7 @@ namespace AasxServer
             if (!object.Equals(bvs.Value, convertedValue))
             {
                 bvs.Value = convertedValue;
-                // TODO: timestamp UtcNow okay or get this internally from the Server?
+                // TODO (jtikekar, 0000-00-00): timestamp UtcNow okay or get this internally from the Server?
                 bvs.Timestamp = DateTime.UtcNow;
                 bvs.ClearChangeMasks(null, false);
             }
@@ -1942,7 +1942,7 @@ namespace AasxServer
         /// Update AAS property values from external OPC servers.
         /// Only submodels which have the appropriate qualifier are affected.
         /// However, this will attempt to get values for all properties of the submodel.
-        /// TODO: Possilby add a qualifier to specifiy which values to get? Or NodeIds per alue?
+        /// TODO (jtikekar, 0000-00-00): Possilby add a qualifier to specifiy which values to get? Or NodeIds per alue?
         /// </summary>
         {
             if (env == null)
@@ -1987,7 +1987,7 @@ namespace AasxServer
                                             Password = p.Value;
                                             break;
                                         case "OPCNamespace": // Namespace
-                                            // TODO: if not int, currently throws nondescriptive error
+                                            // TODO (jtikekar, 0000-00-00): if not int, currently throws nondescriptive error
                                             if (int.TryParse(p.Value, out int tmpI))
                                                 Namespace = tmpI;
                                             break;

@@ -17,7 +17,7 @@ namespace AasSecurity
                 case "get":
                     NeededRights = AccessRights.READ;
                     break;
-                //TODO:jtikekar change to "REPLACE"
+                //TODO (jtikekar, 0000-00-00): change to "REPLACE"
                 case "put":
                     NeededRights = AccessRights.UPDATE;
                     break;
