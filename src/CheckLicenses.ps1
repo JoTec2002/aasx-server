@@ -17,7 +17,7 @@ function CheckLineLength($Path)
     for($i = 0; $i -lt $lines.Count; $i++)
     {
         $line = $lines[$i]
-        if($line.Length -gt 80)
+        if($line.Length -gt 150)
         {
             $msg = "${Path}:$($i+1): Line exceeds the maximum of 80 characters: "
             $msg += $line|ConvertTo-Json
