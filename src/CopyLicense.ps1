@@ -1,3 +1,4 @@
+copy ../LICENSE.TXT .
 copy ../LICENSE.TXT AasxServerBlazor
 copy ../LICENSE.TXT AasxServerBlazor/wwwroot
 copy ../LICENSE.TXT AasxServerCore
@@ -9,3 +10,7 @@ copy ../LICENSE.TXT docker
 copy ../LICENSE.TXT IO.Swagger.Registry.Lib
 copy ../LICENSE.TXT IO.Swagger.Test
 copy ../LICENSE.TXT Script.CheckHelpInReadme
+copy ../LICENSE.TXT AasCore.Aas3_0
+copy ../LICENSE.TXT AasSecurity
+copy ../LICENSE.TXT DataTransferObjects
+copy ../LICENSE.TXT IO.Swagger.V1RC03
