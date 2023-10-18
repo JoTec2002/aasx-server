@@ -10,7 +10,7 @@
     },
     "AasxServerBlazor": {
       "commandName": "Project",
-      "commandLineArgs": "--aasx-in-memory 0 --data-path \"C:\\GitClones\\aasx-server\\content-for-demo\\aasxs\" --edit --with-db --external-blazor http://localhost:5001 --no-security",
+      "commandLineArgs": "--aasx-in-memory 0 --data-path \"C:\\GitClones\\aasx-server\\content-for-demo\\aasxs\" --edit --external-blazor http://localhost:5001 --no-security --dbServerType POSTGRES --dbServerConnection \"Host=localhost; Database=aasx; Username=postgres; Password=MeMySQUnDa5539!; Include Error Detail=true; Port=5432\"",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",

@@ -24,7 +24,7 @@ There are three variants of the server:
 
 * **core**. This is a server based on .NET Core 3.1.
 
-* **windows**. This variant uses .NET Framework 4.7.2, which is the only way
+* **windows**. This variant uses .NET 6.0, which is the only way
   how you can start a server on your Windows machine without administrator privileges.
   If you run on windows start with this variant first and try *blazor* later.
 
@@ -49,7 +49,7 @@ https://github.com/admin-shell-io/aasx-server/releases
 
 ### Installation
 
-AASX Server depends on .NET Core 3.1 runtime (`blazor` and `core` variants)
+AASX Server depends on .NET 6.0 runtime (`blazor` and `core` variants)
 and .NET Framework (`windows` variant), respectively. You need to install the
 respective runtimes before you start the server. .NET framework is part of windows.
 See https://dotnet.microsoft.com/download/dotnet-core/3.1
@@ -100,18 +100,17 @@ To obtain help on individual flags and options, supply the argument `--help`:
 
 <!--- Help starts. -->
 ```
-AasxServerCore:
+AasxServerBlazor:
   serve AASX packages over different interfaces
 
 Usage:
-  AasxServerCore [options]
+  AasxServerBlazor [options]
 
 Options:
   -h, --host <host>                      Host which the server listens on [default: localhost]
   -p, --port <port>                      Port which the server listens on [default: 51310]
   --https                                If set, opens SSL connections. Make sure you bind a certificate to the port before.
   --data-path <data-path>                Path to where the AASXs reside
-  --rest                                 If set, starts the REST server
   --opc                                  If set, starts the OPC server
   --mqtt                                 If set, starts a MQTT publisher
   --debug-wait                           If set, waits for Debugger to attach
@@ -121,6 +120,17 @@ Options:
   --no-security                          If set, no authentication is required
   --edit                                 If set, allows edits in the user interface
   --name <name>                          Name of the server
+  --external-blazor                      external name of the server blazor UI. Set Default to "http://localhost:5001"
+  --read-temp                            If set, reads existing AASX from temp at startup
+  --save-temp                            If set, writes AASX every given seconds
+  --secret-string-api                    If set, allows UPDATE access by query parameter s=
+  --html-id                              If set, creates id for HTML objects in blazor tree for testing
+  --tag                                  Only used to differ servers in task list
+  --aasx-in-memory                       If set, size of array of AASX files in memory. Default if not set 200
+  --dbServerType                         If set, defines the DB Server type e.g. SQLITE
+  --dbServerConnection                   If set, DB Server connection String (need to be set if --dbServerType is set)
+  --no-db-files                          If set, do not export files from AASX into ZIP
+  --start-index                          If set, start index in list of AASX files
   --version                              Show version information
   -?, -h, --help                         Show help and usage information
 ```
@@ -262,90 +272,12 @@ such as [Docker multi-stage builds][multi-stage]
 We provide a powershell script to build the docker containers meant for
 demonstrations at [`src/BuildDockerImages.ps1`](src/BuildDockerImages.ps1).
 
-## Basic API
+## Blazor API
 
-Please find a short description of the REST API below.
+On Default the API is exposed on Port 5001.
 
-{aas-identifier} = idShort of AAS <br />
-{submodel-identifier} = idShort of Submodel <br />
-{se-identifier} = idShort of SubmodelElement <br />
-{sec-identifier} = idShort of SubmodelElementCollection <br />
+See the full API specification at [Swagger Hub](https://v3.admin-shell-io.com/swagger/index.html)
 
-### Asset Administration Shell Repository Interface
-
-Cmd | String | Example
-------- | ------ | -------
-GET | /server/profile | <http://localhost:51310/server/profile>
-GET | /server/listaas | <http://localhost:51310/server/listaas>
-
-### Asset Administration Shell Interface
-
-Cmd | String | Example
-------- | ------ | -------
-GET | /aas/{aas-identifier}  <br />  /aas/{aas-identifier}/core  <br />  /aas/{aas-identifier}/complete  <br />  /aas/{aas-identifier}/thumbnail  <br />  /aas/{aas-identifier}/aasenv   | <http://localhost:51310/aas/ExampleMotor>  <br />  <http://localhost:51310/aas/ExampleMotor/core>  <br />  <http://localhost:51310/aas/ExampleMotor/complete>  <br />  <http://localhost:51310/aas/ExampleMotor/thumbnail>  <br />  <http://localhost:51310/aas/ExampleMotor/aasenv>
-
-
-### Submodel Interface
-
-Cmd | String
-------- | ------
-GET | /aas/{aas-identifier}/submodels/\{submodel-identifier} <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/core <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/deep <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/complete <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/table
-
-> *Example:* <http://localhost:51310/aas/ExampleMotor/submodels/Documentation/complete>
-
-
-### Submodel Element Interface
-
-Cmd | String
-------- | ------
-GET | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier} <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/core <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/complete <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/deep <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/value <br/>
-PUT | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/ *+ Payload* <br />  *Payload = content of "elem"-part of a SubmodelElement (see example below)*
-DELETE |  /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier} | <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements/RotationSpeed>
-
-> *Example:* <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements/RotationSpeed/complete>
-
-### Submodel Element Collection Interface
-Cmd | String
-------- | ------
-GET | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier} <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/core <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/complete <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/deep <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/value
-PUT |     /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier} *+ Payload* <br /> *Payload = content of "elem"-part of a SubmodelElement (see example below)*
-DELETE |  /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}
-
-> *Example:* <http://localhost:51310/aas/ExampleMotor/submodels/Documentation/elements/OperatingManual/DocumentId/complete>
-
-### Example: PUT SubmodelElement
-`PUT` <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements>   
-Payload:
-```
-{
-    "value": "1234",
-    "valueId": null,
-    "semanticId": {
-      "keys": [
-        {
-          "type": "ConceptDescription",
-          "local": true,
-          "value": "http://customer.com/cd//1/1/18EBD56F6B43D895",
-          "index": 0,
-          "idType": "IRI"
-        }
-      ]
-    },
-    "constraints": [],
-    "hasDataSpecification": [],
-    "idShort": "RotationSpeedNEW",
-    "category": "VARIABLE",
-    "modelType": {
-      "name": "Property"
-    },
-    "valueType": {
-      "dataObjectType": {
-        "name": "integer"
-      }
-    }
-}
-```
-Test with: `GET` <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements/RotationSpeedNEW>
 
 ## Issues
 

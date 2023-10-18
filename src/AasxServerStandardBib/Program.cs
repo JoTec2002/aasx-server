@@ -530,100 +530,6 @@ namespace AasxServer
         public static string[] envFileName = null;
         public static string[] envSymbols = null;
         public static string[] envSubjectIssuer = null;
-        /*
-        public static AdminShellPackageEnv[] env = new AdminShellPackageEnv[envimax];
-            {
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null
-            };
-        public static string[] envFileName = new string[envimax];
-            {
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null
-            };
-        public static string[] envSymbols = new string[envimax];
-            {
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null
-            };
-        public static string[] envSubjectIssuer = new string[envimax];
-            {
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null
-            };
-        */
 
         public static string hostPort = "";
         public static string blazorPort = "";
@@ -680,7 +586,8 @@ namespace AasxServer
 
         public static Dictionary<string, string> envVariables = new Dictionary<string, string>();
 
-        public static bool withDb = false;
+        public static bool withDb = true;
+        public static string dbServerType = "SQLITE";       //Allowed Values "SQLITE"; "POSTGRES"
         public static bool isPostgres = false;
         public static bool withDbFiles = false;
         public static int startIndex = 0;
@@ -712,7 +619,8 @@ namespace AasxServer
             public string Tag { get; set; }
             public bool HtmlId { get; set; }
             public int AasxInMemory { get; set; }
-            public bool WithDb { get; set; }
+            public string dbServerType { get; set; }
+            public string dbServerConnection { get; set; }
             public bool NoDbFiles { get; set; }
             public int StartIndex { get; set; }
 #pragma warning restore 8618
@@ -827,8 +735,10 @@ namespace AasxServer
             // if (a.SaveTemp > 0)
             saveTemp = a.SaveTemp;
             Program.htmlId = a.HtmlId;
-            Program.withDb = a.WithDb;
-            Program.withDbFiles = a.WithDb;
+            if (a.dbServerType != null)
+            {
+                Program.dbServerType = a.dbServerType;
+            }
             if (a.NoDbFiles)
                 Program.withDbFiles = false;
             if (a.StartIndex > 0)
@@ -846,6 +756,7 @@ namespace AasxServer
                 Console.WriteLine("Recommend an OPC client update rate > 200 ms.");
             }
 
+            // TODO JoTec2002 remove after DB implementation
             // allocate memory
             env = new AdminShellPackageEnv[envimax];
             envFileName = new string[envimax];
@@ -999,49 +910,39 @@ namespace AasxServer
             int envi = 0;
             int count = 0;
 
+            //TODO implement more DB options
             // Migrate always
-            if (withDb)
+            if (a.dbServerConnection != null)
             {
-                if (isPostgres)
-                {
-                    Console.WriteLine("Use POSTGRES");
-                    using (PostgreAasContext db = new PostgreAasContext())
-                    {
-                        db.Database.Migrate();
-                    }
-                }
-                else
-                {
+                con["DatabaseConnection:ConnectionString"] = a.dbServerConnection;
+            }
+            AasContext._con = con;
+
+            Console.WriteLine(dbServerType);
+            switch (dbServerType.ToUpper())
+            {
+                case "SQLITE":
                     Console.WriteLine("Use SQLITE");
                     using (SqliteAasContext db = new SqliteAasContext())
                     {
                         db.Database.Migrate();
                     }
-                }
+                    break;
+                case "POSTGRES":
+                    Console.WriteLine("Use POSTGRES");
+                    using (PostgreAasContext db = new PostgreAasContext())
+                    {
+                        db.Database.Migrate();
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Unknow DB type specified");
+                    throw new Exception("Unknow DB type specified termination Program");
             }
 
             // Clear DB
             if (withDb && startIndex == 0 && !createFilesOnly)
             {
-                /*
-                if (isPostgres)
-                {
-                    Console.WriteLine("Use POSTGRES");
-                    using (PostgreAasContext db = new PostgreAasContext())
-                    {
-                        db.Database.Migrate();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Use SQLITE");
-                    using (SqliteAasContext db = new SqliteAasContext())
-                    {
-                        db.Database.Migrate();
-                    }
-                }
-                */
-
                 using (AasContext db = new AasContext())
                 {
                     var task = Task.Run(async () => count = await db.DbConfigSets.ExecuteDeleteAsync());
@@ -1555,14 +1456,15 @@ namespace AasxServer
                 // AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
             }
 
-            AasContext._con = con;
+            /*AasContext._con = con;
             if (con != null)
             {
                 if (con["DatabaseConnection:ConnectionString"] != null)
-                {
+                {   
+                    //TODO JoTec2002 change for generalization
                     isPostgres = con["DatabaseConnection:ConnectionString"].ToLower().Contains("host");
                 }
-            }
+            }*/
 
             string nl = System.Environment.NewLine;
 
@@ -1665,9 +1567,13 @@ namespace AasxServer
                     new[] {"--aasx-in-memory"},
                     "If set, size of array of AASX files in memory"),
 
-                new Option<bool>(
-                    new[] {"--with-db"},
-                    "If set, will use DB by Entity Framework"),
+                new Option<string>(
+                    new[] {"--dbServerType"},
+                    "If set, defines the DB Server type e.g. SQLITE"),
+
+                new Option<string>(
+                    new[] {"--dbServerConnection"},
+                    "If set, DB Server connection String (need to be set if --dbServerType is set)"),
 
                 new Option<bool>(
                     new[] {"--no-db-files"},
