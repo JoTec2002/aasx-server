@@ -10,7 +10,7 @@
     },
     "AasxServerBlazor": {
       "commandName": "Project",
-      "commandLineArgs": "--no-security --aasx-in-memory 1000 --data-path \"C:\\Development\\Solar\" --edit --external-blazor http://localhost:5001",
+      "commandLineArgs": "--aasx-in-memory 0 --data-path \"C:\\GitClones\\aasx-server\\content-for-demo\\aasxs\" --edit --with-db --external-blazor http://localhost:5001 --no-security",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
