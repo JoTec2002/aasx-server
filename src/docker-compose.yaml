@@ -1,0 +1,20 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=MeMySQUnDa5539!
+    ports:
+      - "5432:5432"
+    restart: always
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin4@graubner-bayern.de
+      - PGADMIN_DEFAULT_PASSWORD=MeMySQUnDa5539!
+    ports:
+      - "8080:80"
+    restart: always
